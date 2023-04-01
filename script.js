@@ -76,7 +76,7 @@ function game(){
     }
     else if(playerScore > computerScore){
         console.log("\nYour final score is " + playerScore 
-        + "\n\nThe computer's final score is " + computerScore
+        + "\nThe computer's final score is " + computerScore
         + "\nCongratulations! You win the game!")
     }
     else if(playerScore < computerScore){
