@@ -96,13 +96,6 @@ function playRound(computerSelection, playerSelection){
 
 
 }
-    
-   
-    
-
-    
-    
-
 
 function imgLoader(playerSelection, computerSelection){
     
@@ -128,8 +121,6 @@ function game(){
     
         const buttons = document.querySelectorAll("button");
 
-        
-        
         buttons.forEach((button) => {
                 
             button.addEventListener('click', (e) => {
@@ -152,45 +143,7 @@ function game(){
             result.textContent = '';
 
         })
-
-
-        
     
 }
-
-
-        
-       
-           
-
-            
-    
-    
-        
-    
-        
-        //let playerSelection = prompt("Choose rock, paper, or scissors: ");
-        //let computerSelection = getComputerChoice();
-       // console.log(playRound(computerSelection, playerSelection));
-       // console.log("Your score is: " + playerScore)
-       // console.log("The computer score is: " + computerScore)
-    
-    /* if(playerScore === computerScore){
-        console.log("\nYour final score is " + playerScore 
-        + "\nThe computer's final score is " + computerScore
-        + "\nNo one wins! It's a tie!")
-    }
-    else if(playerScore > computerScore){
-        console.log("\nYour final score is " + playerScore 
-        + "\nThe computer's final score is " + computerScore
-        + "\nCongratulations! You win the game!")
-    }
-    else if(playerScore < computerScore){
-        console.log("\nYour final score is " + playerScore 
-        + "\nThe computer's final score is " + computerScore
-        + "\nYou lose!")
-    }
-    */ 
-
 
 game();
