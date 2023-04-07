@@ -12,6 +12,9 @@ playerImgContainer.appendChild(defaultText1);
 computerImgContainer.appendChild(defaultText2);
 const playerScoreDiv = document.querySelector('.playerScore');
 const computerScoreDiv = document.querySelector('.computerScore');
+const playAgain = document.createElement('button');
+playAgain.textContent = 'Play again';
+playAgain.classList.add('playAgain')
 
 
 
@@ -35,43 +38,71 @@ function playRound(computerSelection, playerSelection){
     playerSelectionLower = playerSelection.toLowerCase();
     playerSelectionCap = playerSelection.charAt(0).toUpperCase();
     playerSelection = playerSelectionLower.replace(playerSelectionLower.charAt(0),playerSelectionCap);
-    if(playerSelection === computerSelection){
-        result.textContent = "You also chose " + playerSelection.toLowerCase() + ". It's a tie!";
-        imgLoader(playerSelection, computerSelection);
+    
+
+    if(playerScore < 5 && computerScore < 5){
+        if(playerSelection === computerSelection){
+            result.textContent = "It's a tie!";
+            imgLoader(playerSelection, computerSelection);
+        }
+        else if (playerSelection === "Rock" && computerSelection === "Scissors"){
+            playerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You win! Rock beats scissors.";
+        }
+        else if (playerSelection === "Paper" && computerSelection === "Rock"){
+            playerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You win! Paper beats rock.";
+        }
+        else if (playerSelection === "Scissors" && computerSelection === "Paper"){
+            playerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You win! Scissors beats paper.";
+        }
+        else if (playerSelection === "Scissors" && computerSelection === "Rock"){
+            computerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You lose! Rock beats scissors.";
+        }
+        else if (playerSelection === "Rock" && computerSelection === "Paper"){
+            computerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You lose! Paper beats rock.";
+        }
+        else if (playerSelection === "Paper" && computerSelection === "Scissors"){
+            computerScore++;
+            imgLoader(playerSelection, computerSelection);
+            result.textContent = "You lose! Scissors beats paper.";
+        }
+        
+        
+        playerScoreDiv.textContent = playerScore;
+        computerScoreDiv.textContent = computerScore;
     }
-    else if (playerSelection === "Rock" && computerSelection === "Scissors"){
-        playerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You win! Rock beats scissors.";
-    }
-    else if (playerSelection === "Paper" && computerSelection === "Rock"){
-        playerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You win! Paper beats rock.";
-    }
-    else if (playerSelection === "Scissors" && computerSelection === "Paper"){
-        playerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You win! Scissors beats paper.";
-    }
-    else if (playerSelection === "Scissors" && computerSelection === "Rock"){
-        computerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You lose! Rock beats scissors.";
-    }
-    else if (playerSelection === "Rock" && computerSelection === "Paper"){
-        computerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You lose! Paper beats rock.";
-    }
-    else if (playerSelection === "Paper" && computerSelection === "Scissors"){
-        computerScore++;
-        imgLoader(playerSelection, computerSelection);
-        result.textContent = "You lose! Scissors beats paper.";
-    }
-    playerScoreDiv.textContent = playerScore;
-    computerScoreDiv.textContent = computerScore;
+    
+    if(playerScore === 5){
+        playerScoreDiv.textContent = playerScore;
+        computerScoreDiv.textContent = computerScore;
+        result.textContent = "You win!"
+        result.appendChild(playAgain);
+    } 
+    else if(computerScore === 5){
+        playerScoreDiv.textContent = playerScore;
+        computerScoreDiv.textContent = computerScore;
+        result.textContent = "You lose!"
+        result.appendChild(playAgain);
+    } 
+
+
 }
+    
+   
+    
+
+    
+    
+
 
 function imgLoader(playerSelection, computerSelection){
     
@@ -95,17 +126,44 @@ function imgLoader(playerSelection, computerSelection){
 
 function game(){
     
+        const buttons = document.querySelectorAll("button");
 
-    const buttons = document.querySelectorAll("button");
-
-    
+        
+        
         buttons.forEach((button) => {
+                
             button.addEventListener('click', (e) => {
+                
                 playRound(getComputerChoice(), button.textContent);
-            });
+
+            }) 
+                       
+        });
+
+        playAgain.addEventListener('click', (e) => {
+            playerScore = 0;
+            computerScore = 0;
+            playerScoreDiv.textContent = playerScore;
+            computerScoreDiv.textContent = computerScore;
+            playerImgContainer.removeChild(playerImgContainer.firstChild);
+            computerImgContainer.removeChild(computerImgContainer.firstChild);
+            playerImgContainer.appendChild(defaultText1);
+            computerImgContainer.appendChild(defaultText2);
+            result.textContent = '';
+
         })
 
-    // Make the game go up to 5. Announce winner once one player reaches 5 points.
+
+        
+    
+}
+
+
+        
+       
+           
+
+            
     
     
         
@@ -133,6 +191,6 @@ function game(){
         + "\nYou lose!")
     }
     */ 
-}
+
 
 game();

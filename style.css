@@ -38,11 +38,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 16px;
 }
 
 .header {
     font-weight: 700;
     font-size: 52px;
+    margin-top: 20px;
 }
 
 .results {
@@ -80,4 +82,8 @@ button:active {
     align-items: center;
     font-weight: 600;
     font-size: 42px;
+}
+
+.playAgain{
+    margin-left: 30px;
 }
