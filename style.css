@@ -1,0 +1,83 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #F1F6F9;
+}
+
+.action {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.playerImage,
+.computerImage {
+    height: 300px;
+    width: 300px;
+    background-color: #9BA4B4;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    padding: 16px;
+}
+
+.img1,
+.img2 {
+    height: 100%;
+    width: 100%;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    font-weight: 700;
+    font-size: 52px;
+}
+
+.results {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+button {
+    font-family: 'Titillium Web', sans-serif;
+    height: 50px;
+    border-radius: 12px;
+    border-width: 0;
+    background-color: #394867;
+    font-size: 30px;
+    font-weight: 600;
+    color:  #F1F6F9;
+    width: 200px;
+}
+
+button:active {
+    background-color: #14274E;
+}
+
+.score {
+    display: flex;
+    width: 200px;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 42px;
+}
